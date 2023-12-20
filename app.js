@@ -446,6 +446,23 @@ app.post('/inputPrediction', async (req, res) => {
     }
 });
 
+app.get('/', async (req, res) => {
+    try {
+        const result = 'hello!'
+        res.status(200).json({
+            status: 'success',
+            message: 'connected!',
+            result
+        })
+    } catch (error) {
+        res.status(500).json({
+            status: 'error',
+            message: 'An error occurred',
+            error: error.message
+        });
+    }
+})
+
 // Start the server on a specified port
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
